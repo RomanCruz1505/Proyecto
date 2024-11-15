@@ -10,6 +10,7 @@
 
     <!-- Navbar Principal -->
     <header class="navbar">
+        <input type="text" id="buscador" placeholder="Buscar..." onkeyup="filtrar()">
         <div class="logo">Futbol para la gente</div>
         <nav>
             <ul>
@@ -23,7 +24,27 @@
             </ul>
         </nav>
     </header>
+        <!-- Lista de elementos a buscar -->
+  <ul id="lista">
+    <li>Artículo 1: Introducción a la programación</li>
+    <li>Artículo 2: Fundamentos de HTML y CSS</li>
+    <li>Artículo 3: JavaScript básico</li>
+    <li>Artículo 4: Desarrollo de aplicaciones web</li>
+    <li>Artículo 5: Bases de datos y SQL</li>
+  </ul>
+  
+  <script>
+    function filtrar() {
+      const input = document.getElementById('buscador').value.toLowerCase();
+      const items = document.getElementById('lista').getElementsByTagName('li');
 
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        const texto = item.textContent || item.innerText;
+        item.style.display = texto.toLowerCase().includes(input) ? '' : 'none';
+      }
+    }
+  </script>
  
 
 </body>
